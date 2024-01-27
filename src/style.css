@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* 先进行CSS reset */
+*{
+    box-sizing: border-box;
+}
+
+/* 设置body居中 */
+body{
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+/* 容器设置为flex布局，设置宽度 */
+.container{
+    display: flex;
+    width: 90vw;
+}
+/* 设置小卡片样式 */
+.panel{
+    background-size: cover;  /*背景图片覆盖容器*/
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;  /*鼠标悬停显示为手型*/
+    flex: 0.5;   /*弹性项目里面的增大和缩小，此处为缩小一倍*/
+    margin: 10px;
+    position: relative;
+    transition: all 700ms ease-in; /*所有可以被动画的属性都按照加速过渡动画，所用时间为700ms*/
+}
+/* 设置小卡片中文字样式 */
+.panel h3{
+    font-size: 24px;
+    position: absolute;  /*相当于父元素做绝对定位*/
+    bottom: 20px;        /*放置在左下角*/
+    left: 20px;
+    margin: 0;
+    opacity: 0;         /*透明度设置完全透明*/
+}
+.panel.active{
+    flex: 5;
+}
+
+.panel.active h3{
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/*设置媒体查询，做响应式页面*/
+@media (max-width: 480px){
+    .container{
+        width: 100vw;
+    }
+
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display: none;
+    }
+}
